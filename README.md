@@ -60,8 +60,6 @@ ____
  
      Ввести свой port, по умолчанию 5432.
  
-     Пример:
-     <a href="https://ibb.co/SB3MwWh"><img src="https://i.ibb.co/vkjT4g7/Screenshot-2023-10-25-20-00-38.png" alt="image" border="0" /></a>
 
 * В модуле main.py переменной ``db_name`` задать имя базы данных, которая в последствии будет использоваться.
 * Класс DBManager
