@@ -36,7 +36,7 @@ def postgresql_format(input_data: typing.Any) -> list[tuple]:
 
 def create_database(params: dict, db_name: str) -> None:
     """Создает новую базу данных."""
-    conn = psycopg2.connect(dbname="postgres", **params)
+    conn = psycopg2.connect(dbname="postgres", **params, options="-c client_encoding=UTF8")
     conn.autocommit = True
     cur = conn.cursor()
 

@@ -18,10 +18,9 @@ class DBManager:
         ORDER BY vacancies_quantity DESC"""
         )
         rows = cur.fetchall()
-        exit_data = {}
         for row in rows:
-            exit_data[row[0]] = row[1]
-        return exit_data
+            print(f"""\nРаботодатель: {row[0]}
+Вакансий: {row[1]}""")
 
     def all_vacancies(self, cur: typing.Any) -> list:
         """
@@ -29,18 +28,19 @@ class DBManager:
         """
         cur.execute("SELECT company_name, vacancy_name, salary_to, vacancy_url FROM vacancies")
         rows = cur.fetchall()
-        exit_data = []
         for row in rows:
-            exit_data.append(list(row))
-        return exit_data
+            print(f"""\nКомпания: {row[0]}
+Название вакансии: {row[1]}
+Зарплата: {row[2]}
+Ссылка: {row[3]}""")
 
-    def avg_salary(self, cur: typing.Any) -> int:
+    def avg_salary(self, cur: typing.Any) -> str:
         """
         получает среднюю зарплату по вакансиям
         """
         cur.execute(f"SELECT AVG(salary_to) FROM vacancies")
         avg_salary = cur.fetchall()
-        return int(avg_salary[0][0])
+        return f"\nСредняя зарплата: {int(avg_salary[0][0])}"
 
     def get_vacancies_with_higher_salary(self, cur: typing.Any) -> list:
         """
@@ -54,8 +54,10 @@ class DBManager:
         rows = cur.fetchall()
         exit_data = []
         for row in rows:
-            exit_data.append(list(row))
-        return exit_data
+            print(f"""\nКомпания: {row[0]}
+Название вакансии: {row[1]}
+Зарплата: {row[2]}
+Ссылка: {row[3]}""")
 
     def get_vacancies_with_keyword(self, cur: typing.Any, word: str) -> list:
         """
@@ -70,5 +72,7 @@ class DBManager:
         rows = cur.fetchall()
         exit_data = []
         for row in rows:
-            exit_data.append(list(row))
-        return exit_data
+            print(f"""\nКомпания: {row[0]}
+Название вакансии: {row[1]}
+Зарплата: {row[2]}
+Ссылка: {row[3]}""")

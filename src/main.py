@@ -15,7 +15,7 @@ from src.utils import (
 def main() -> None:
     vacancies_hh = HeadHunterAPI()
 
-    db_name = "Course_work_5"
+    db_name = "course_work_5"
 
     params = config()
     conn = None
@@ -39,11 +39,11 @@ def main() -> None:
 
                 database_class = DBManager()
 
-                print(database_class.get_companies_and_vacancies_count(cur))
-                print(database_class.all_vacancies(cur))
+                database_class.get_companies_and_vacancies_count(cur)
+                database_class.all_vacancies(cur)
                 print(database_class.avg_salary(cur))
-                print(database_class.get_vacancies_with_higher_salary(cur))
-                print(database_class.get_vacancies_with_keyword(cur, "экономист"))
+                database_class.get_vacancies_with_higher_salary(cur)
+                database_class.get_vacancies_with_keyword(cur, "экономист")
 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
